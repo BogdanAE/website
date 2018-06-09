@@ -440,7 +440,7 @@
 ----------------------PHONE AND SMALL DEVICES--------------
 -----------------------------------------------------------*/
 
-@media(max-width: 1300px) and (min-width: 591px) {
+@media(max-width: 1300px) and (min-width: 801px) {
     body {
         margin-top: 0px;
         margin-bottom: 0px;
@@ -491,7 +491,7 @@
         margin-top: 50px;
     }
     main {
-        top: 100%;
+        /* top: 100vh; */
         width: 100%;
     }
     #img1, #img2, #img3, #img4, #img5, #img6 {
@@ -537,7 +537,7 @@
     }
     .buttonContainer {
         background: #bcd5d1;
-        height: 45px;
+        height: 80px;
         width: 100%;
         padding-top: 10px;
         top: 0px;
@@ -546,7 +546,7 @@
     }
     .buttonContainer>button {
         font-family: 'Abril Fatface', cursive;
-        font-size: 1.05em;
+        font-size: 1.7em;
     }
     #homeB {
         margin-left: 75px;
@@ -554,7 +554,7 @@
     button {
         float: left;
         margin-left: 15px;
-        height: 35px;
+        height: 65px;
         border: 2px solid rgb(0, 87, 109);
         background: transparent;
         color: rgb(0, 87, 109);
@@ -684,7 +684,7 @@
     }
     #testiPage {
         position: absolute;
-        top: 50px;
+        top: 100px;
         width: 100%;
         height: auto;
         background-color: #89bdd3;
@@ -865,7 +865,7 @@
 ----------------------UNDER 500px DEVICES------------------
 -----------------------------------------------------------*/
 
-@media (max-width: 590px) {
+@media (max-width: 800px) {
     body {
         margin-top: 0px;
         margin-bottom: 0px;
@@ -919,6 +919,15 @@
         top: 100%;
         width: 100%;
     }
+    main :nth-child(1)  {
+        width: 100%;
+        float: left;
+    }
+    main :nth-child(2) {
+        width: 100%;
+        float: left;
+    }
+    
     #img1, #img2, #img3, #img4, #img5, #img6 {
         border-radius: 3px;
         max-width: 70%;
@@ -962,7 +971,8 @@
     }
     .buttonContainer {
         background: #bcd5d1;
-        min-height: 45px;
+        min-height: 110px;
+        height: auto;
         width: 100%;
         padding-top: 10px;
         top: 0px;
@@ -975,7 +985,7 @@
     }
     .buttonContainer>button {
         font-family: 'Abril Fatface', cursive;
-        font-size: 0.7em;
+        font-size: 1.3em;
         float: left;
         margin-top: 5px;
     }
@@ -985,7 +995,7 @@
     button {
         float: left;
         margin-left: 5px;
-        height: 35px;
+        height: auto;
         border: 2px solid rgb(0, 87, 109);
         background: transparent;
         color: rgb(0, 87, 109);
@@ -1018,6 +1028,7 @@
         height: 100%;
         float: right;
         margin-right: 1%;
+        top: 50px;
     }
     .verticalImage :nth-child(n) {
         margin-top: 50px;

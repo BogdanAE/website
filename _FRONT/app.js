@@ -1,4 +1,6 @@
 //-------GLOBALS----------------------------------
+var media = window.matchMedia('(max-width: 1300px)');
+var media2 = window.matchMedia('(min-width: 1301px)');
 var oferte1 = document.getElementById("oferte");
 var ofertaClass = document.querySelector(".oferte");
 var upButton = document.querySelector(".buttonUp");
@@ -35,16 +37,7 @@ var testiBut = document.getElementById('allTestimonials');
     document.getElementById('testiPage').style.display = 'none';
 })();
 
-var persons = new Object({
-    person1: {
-        text: ['Mi-a placut foarte mult tot . As reveni cu placere!!', 'Cea mai tare pensiune din Cluj!! Veniti cat mai multi',
-            'Mancarea foarte buna , oameni faini si relaxare !!!'],
-        avatar: ['https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807__340.png', 'https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png',
-            'https://cdn.pixabay.com/photo/2018/05/19/22/03/man-3414477_960_720.png'],
-        title: ['Recomand', 'FRUMOS', ' O sa REVENIM!'],
-        name: ['Paula Miereanu', 'Epure Bogdan-Alin', 'Grigore Grigorescu']
-    }
-});
+
 //-------END GLOBALS----------------------------------
 
 
@@ -64,31 +57,7 @@ addEventListener("keydown", function (val) {
         init();
 });
 
-function logScrollDirection() {
-    var previous = window.scrollY;
-    window.addEventListener('scroll', function () {
-        window.scrollY > previous ? direction = "down" : direction = "up";
-        previous = 10 + window.scrollY;
-        // console.log(direction);
-        if (direction == "down") {
-            if (window.scrollY >= 0 && window.scrollY <= maxHeight && enabled == true) {
-                window.scrollTo({ top: window.innerHeight, left: 0, behavior: 'smooth' });
-            }
-        }
-        if (window.scrollY === (maxHeight))
-            document.querySelector('.buttonContainer').style.position = 'fixed';
-        else if (window.scrollY < (maxHeight))
-            document.querySelector('.buttonContainer').style.position = 'static';
-        if (window.scrollY >= maxHeight)
-            upButton.style.display = 'block';
-        else if (window.scrollY < maxHeight / 1.5) {
-            upButton.style.display = 'none';
-            document.getElementById('myAside').style.opacity = 0;
-            document.querySelector('main').style.opacity = 0;
-            document.querySelector('.testimoniale').style.opacity = 0;
-        }
-    });
-}
+
 
 function checkIt(enabled) {
     if (enabled == true) {
@@ -263,79 +232,12 @@ document.querySelector(".oferte").addEventListener("click", function () {
 });
 
 //----------------IMAGES------------------------------------------
-var canICloseIt = false;
-var canICloseIt2 = false;
-function createBigImage(imgValue) {
-    dupli();
-    if (document.querySelector(".imageBig").style.display == "none" && duplicates === false) {
-        document.querySelector(".imageBig").style.display = "block";
-        document.querySelector(".imageBig").style.background = "url('./srcs/" + parseInt(imgValue) + ".jpg')";
 
-        document.querySelector(".imageBig").style.backgroundSize = "100% 100%";
-        document.querySelector(".imageBig").style.backgroundRepeat = 'no-repeat';
-
-        document.querySelector(".imageBig").style.filter = "blur(0.1px)";
-        document.querySelector(".imageBig").style.filter = "grayscale(0%)";
-        allGray.style.filter = "grayscale(100%) blur(2.3px)";
-        scrollTo({ left: 0, top: window.innerHeight, behavior: 'smooth' });
-    }
-    setTimeout(() => {
-        canICloseIt = true;
-    }, 50);
-}
-
-close.addEventListener('click', function () {
-    document.querySelector(".imageBig").style.display = "none";
-    document.body.style.filter = "grayscale(0%)";
-    allGray.style.filter = "grayscale(0%)";
-    canICloseIt = false;
-});
-
-// bigImage.addEventListener('click', function () {
-//     document.querySelector(".imageBig").style.display = "none";
-//     allGray.style.filter = "grayscale(0%)";
-//     canICloseIt = false;
-// });
-
-var clicker = addEventListener('click', () => {
-    dupli();
-    if (bigImage.style.display == 'block') {
-        removeEventListener('click', clicker, { passive: true });
-        canICloseIt = false;
-        canICloseIt2 =false;
-    }
-    if (canICloseIt) {
-        setTimeout(() => {
-            if (document.querySelector(".imageBig").style.display == "block") {
-                document.querySelector(".imageBig").style.display = "none";
-                document.body.style.filter = "grayscale(0%)";
-                allGray.style.filter = "grayscale(0%)";
-                canICloseIt = false;
-            }
-        }, 60);
-    }
-    if (canICloseIt2) {
-        setTimeout(() => {
-            if (document.querySelector(".oferte").style.display == "block") {
-                document.querySelector(".oferte").style.display = "none";
-                document.body.style.filter = "grayscale(0%)";
-                allGray.style.filter = "grayscale(0%)";
-                document.getElementById("myHeader").style.filter = "grayscale(0%)";
-                canICloseIt2 = false;
-                buttonClass();
-            }
-        }, 60)
-    }
-
-});
-//----------------------END IMAGE--------------------------------------------------
 
 // if (enabled == true)
 // {
 //     logScrollDirection();
 // }
-
-logScrollDirection();
 
 upButton.addEventListener('click', function () {
     window.scrollTo({
@@ -344,108 +246,6 @@ upButton.addEventListener('click', function () {
         behavior: 'smooth'
     });
 });
-
-
-//-------------CAROUSEL--------------------------------------
-setInterval(function () {
-    if (testi1.style.visibility == "visible") {
-        // console.log("aici1");
-        testi1.style.visibility = "hidden";
-        testi2.style.visibility = "visible";
-        document.getElementById("circle2").style.backgroundColor = "black";
-        document.getElementById("circle1").style.backgroundColor = "gainsboro";
-    }
-    else if (testi2.style.visibility == "visible") {
-        // console.log("aici2");
-        testi2.style.visibility = "hidden";
-        testi3.style.visibility = "visible";
-        document.getElementById("circle3").style.backgroundColor = "black";
-        document.getElementById("circle2").style.backgroundColor = "gainsboro";
-    }
-    else if (testi3.style.visibility == "visible") {
-        // console.log("aici3");
-        testi3.style.visibility = "hidden";
-        testi1.style.visibility = "visible";
-        document.getElementById("circle1").style.backgroundColor = "black";
-        document.getElementById("circle3").style.backgroundColor = "gainsboro";
-    }
-}, 4000);
-
-circle1.addEventListener("click", function () {
-    testi1.style.visibility = "visible";
-    testi2.style.visibility = "hidden";
-    testi3.style.visibility = " hidden";
-    circle1.style.background = "black";
-    circle2.style.background = "gainsboro";
-    circle3.style.background = "gainsboro";
-});
-
-circle2.addEventListener("click", function () {
-    testi2.style.visibility = "visible";
-    testi1.style.visibility = "hidden";
-    testi3.style.visibility = " hidden";
-    circle2.style.background = "black";
-    circle1.style.background = "gainsboro";
-    circle3.style.background = "gainsboro";
-});
-
-circle3.addEventListener("click", function () {
-    testi3.style.visibility = "visible";
-    testi2.style.visibility = "hidden";
-    testi1.style.visibility = " hidden";
-    circle3.style.background = "black";
-    circle2.style.background = "gainsboro";
-    circle1.style.background = "gainsboro";
-});
-
-SD.addEventListener("click", function () {
-    if (testi1.style.visibility == "visible") {
-        // console.log("aici1");
-        testi1.style.visibility = "hidden";
-        testi2.style.visibility = "visible";
-        document.getElementById("circle2").style.backgroundColor = "black";
-        document.getElementById("circle1").style.backgroundColor = "gainsboro";
-    }
-    else if (testi2.style.visibility == "visible") {
-        // console.log("aici2");
-        testi2.style.visibility = "hidden";
-        testi3.style.visibility = "visible";
-        document.getElementById("circle3").style.backgroundColor = "black";
-        document.getElementById("circle2").style.backgroundColor = "gainsboro";
-    }
-    else if (testi3.style.visibility == "visible") {
-        // console.log("aici3");
-        testi3.style.visibility = "hidden";
-        testi1.style.visibility = "visible";
-        document.getElementById("circle1").style.backgroundColor = "black";
-        document.getElementById("circle3").style.backgroundColor = "gainsboro";
-    }
-});
-
-SS.addEventListener("click", function () {
-    if (testi1.style.visibility == "visible") {
-        // console.log("aici1");
-        testi1.style.visibility = "hidden";
-        testi3.style.visibility = "visible";
-        document.getElementById("circle3").style.backgroundColor = "black";
-        document.getElementById("circle1").style.backgroundColor = "gainsboro";
-    }
-    else if (testi2.style.visibility == "visible") {
-        // console.log("aici2");
-        testi2.style.visibility = "hidden";
-        testi1.style.visibility = "visible";
-        document.getElementById("circle1").style.backgroundColor = "black";
-        document.getElementById("circle2").style.backgroundColor = "gainsboro";
-    }
-    else if (testi3.style.visibility == "visible") {
-        // console.log("aici3");
-        testi3.style.visibility = "hidden";
-        testi2.style.visibility = "visible";
-        document.getElementById("circle2").style.backgroundColor = "black";
-        document.getElementById("circle3").style.backgroundColor = "gainsboro";
-    }
-});
-//-------------END CAROUSEL--------------------------------------
 
 //------------------GOOGLE MAPS----------------------------------
 function myMap() {
@@ -487,31 +287,6 @@ homeButton.addEventListener("click", function () {
     document.getElementById("testiPage").style.display = 'none';
     buttonClass();
 });
-
-addEventListener('scroll',
-    function appear() {
-        if (window.scrollY >= (0.2 * window.innerHeight)) {
-            //console.log('aside');
-            document.getElementById('myAside').style.transition = '2s ease';
-            document.getElementById('myAside').style.opacity = 1;
-
-            document.querySelector('main').style.transition = 'opacity 2s ease';
-            document.querySelector('main').style.opacity = 1;
-        }
-        if (window.scrollY >= (1.1 * window.innerHeight)) {
-            //console.log('testimoniale');
-            document.querySelector('.testimoniale').style.transition = 'opacity 2s ease';
-            document.querySelector('.testimoniale').style.opacity = 1;
-        }
-        if (window.scrollY < (0.3 * window.innerHeight)) {
-            init();
-            // duplicates = true;
-        }
-        if (window.scrollY <= window.innerHeight && (document.querySelector('.imageBig').style.display == 'block'
-            || document.querySelector('.oferte').style.display == 'block')) {
-            window.scrollTo({ left: 0, top: window.innerHeight, behavior: 'smooth' });
-        }
-    });
 
 !(function copyright() {
     var date = new Date().getFullYear();
