@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <title>PREZENTARE PENSIUNE</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <div id="loading">
+        LOADING...
+    </div>
+
+    <div id="loaded">
+        <div class="buttonUp">
+            <i class="fa fa-angle-double-up"></i>
+        </div>
+
+        <div id="aboutPage">
+            <h3>Ceva despre</h3>
+        </div>
+
+        <div id="testiPage">
+            <h3>Testimoniale</h3>
+            <form action="http://127.0.0.1:3000/" method="post">
+                Nume:
+                <input type="text" name='name' required>
+                <br>
+                <br> Titlu:
+                <input type="text" name='title' required>
+                <br>
+                <br> Mesaj:
+                <input type="text" name='message' required>
+                <br>
+                <br>
+                <select name="avatar" required>
+                    <option value="http://icons.iconarchive.com/icons/chanut/role-playing/256/King-icon.png">Domnul</span>
+                    </option>
+                    <option value="http://icons.iconarchive.com/icons/chanut/role-playing/256/Elf-icon.png">Doamna
+                        <i class="fas fa-chess-queen"></i>
+                    </option>
+                </select>
+                <br>
+                <br>
+                <input id="submit" type="submit" value="submit">
+            </form>
+        </div>
+
+        <div class="reservationPage">
+            <form id="resForm">
+                <table>
+                    <tr>
+                        <tr>
+                            <th>
+                                <h2>Formular rezervare</h2>
+                            </th>
+                        </tr>
+                        <td>Nume:</td>
+                        <td>
+                            <input type="text" placeholder="introduceti numele dumneavoastra" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Prenume:</td>
+                        <td>
+                            <input type="text" placeholder="introduceti prenumele dumneavoastra" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Numar telefon</td>
+                        <td>
+                            <input type="tel" placeholder="introduceti numarul de telefon" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Data cazare:</td>
+                        <td>
+                            <input type="date" id="startDate" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Data Plecare</td>
+                        <td>
+                            <input type="date" id="endDate" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Alte mentiuni:</td>
+                        <td>
+                            <textarea rows="7" cols="30" placeholder="mentiuni"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit" id="subBut" onclick="checkAll()">Rezerva</button>
+            </form>
+        </div>
+
+        <div class="scrollDiv">
+            <header id="myHeader">
+                <p> WELCOME in Cluj-Napoca | WILLKOMMEN in Cluj-Napoca </p>
+                <div id="mouse">
+                    <div class="mouseScroller"></div>
+                </div>
+            </header>
+
+            <div class="buttonContainer">
+                <div class="imageBig">
+                    <div class="xClose"></div>
+                </div>
+                <div class="oferte">
+                    <div class="oferteM">
+                        <p>Cazare Cazare ocazionala( in regim HOSTEL):</p>
+                        <ul>
+                            <li>
+                                <i class="fa fa-bed"></i> 1 pat -> 50 lei</li>
+                            <li>
+                                <i class="fa fa-bed"></i>
+                                <i class="fa fa-bed"> </i> 2 paturi -> 80 lei</li>
+                            <li>
+                                <i class="fa fa-bed"></i>
+                                <i class="fa fa-bed"> </i>
+                                <i class="fa fa-bed"></i> 3 paturi -> 120 lei</li>
+                        </ul>
+                    </div>
+                    <div class="oferteM">
+                        <p>Toata cabana cabana pentru weeken ( 2zile) -> 1000 lei (Sambata , Duminica sau Veineri Sambata)</p>
+                        <p>Revelion: 1000euro (pentru o perioada de 3 zile). 385 euro camera pentru 3 zile sau 128 euro patul
+                            pentru 3 zile</p>
+                        <p>Untold(2 august - 5 august) -> 800 euro pentru 3 zile(300 euro camera sau 100euro patul)</p>
+                        <p>Electric Castle (18 - 22 Iulie) -> 520 euro pentru 3 zile</p>
+                    </div>
+                    <div class="oferteM">
+                        <p>Inchiriere:</p>
+                        <p>Sala de mese ocazional:</p>
+                        <ul>
+                            <li>400 lei pentru evenimente fara mancare</li>
+                            <li>500lei + 55lei meniul</li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" id="homeB">
+                    <span class="fa fa-home"></span> Home</button>
+                <button type="button" id="aboutButton">
+                    <span class="fa fa-address-card"></span>
+                    Despre noi</button>
+                <button type="button" id="oferte">
+                    <span class="fa fa-money"></span> Oferte</button>
+                <button type="button" class="rezerva" id="rezB">REZERVARE</button>
+            </div>
+        </div>
+
+
+
+        <div id="graySc">
+            <main>
+                <!-- <div class="verticalImage">
+                <img src="./srcs/1.jpg" width="300px" height="200px" alt="imaginePensiune1" id="img1">
+                <img src="./srcs/2.jpg" width="300px" heighat="200px" id="img2">
+                <img src="./srcs/3.jpg" width="300px" height="200px" id="img3">
+            </div>
+            <div class="verticalImage" id="verticalImage">
+                <img src="./srcs/4.jpg" width="300px" height="200px" id="img4">
+                <img src="./srcs/5.jpg" width="300px" height="200px" id="img5">
+                <img src="./srcs/6.jpg" width="300px" height="200px" id="img6">
+            </div> -->
+                <div class="verticalImage">
+                    <img  id="img1" onclick="createBigImage(1)">
+                    <img src="./srcs/2.jpg" id="img2" onclick="createBigImage(2)">
+                    <img src="./srcs/3.jpg" id="img3" onclick="createBigImage(3)">
+                </div>
+                <div class="verticalImage" id="verticalImage">
+                    <img src="./srcs/4.jpg" id="img4" onclick="createBigImage(4)">
+                    <img src="./srcs/5.jpg" id="img5" onclick="createBigImage(5)">
+                    <img src="./srcs/6.jpg" id="img6" onclick="createBigImage(6)">
+                </div>
+            </main>
+            <aside id="myAside">
+                <h2>Descriere zona si pensiune</h2>
+                <p>Zona metropolitana a Clujului cu linie de autobuz direct se extinde pana in comuna Apahida, satul de vacanta
+                    Campenesti. La 17 km de Cluj (unde avem UNTOLD), 20 de minute cu masina personala (sau va ducem noi la
+                    eveniment) si la 15 km de Bontida unde avem Electric Castle, exista o zona extinsa cu 5 lacuri de pesti
+                    unde se tin concursuri de pescuit sportiv sau la cerere pentru o zi (sau pe gratis pe canalele ce inconjoara
+                    lacurile) se poate pescui recreativ. In vecinatatea lacului doi, la drum se afla casa de vacanta LIPA
+                    (vezi Google Maps) unde te poti incarca cu energie pozitiva de la linistea locului si sunetele albinelor
+                    sau talangile turmelor de oi de pe dealurile invecinate. Aici poti veni cu prietenii sa te distrezi,
+                    muzica, dans, pescuit, gratare sau laja la soare! Dispunem pe proprietate de:
+                </p>
+                <ul>
+                    <li>o zona pentru gratare</li>
+                    <li>parcare amenajata</li>
+                    <li>o sala de mese cu 25 de locuri</li>
+                    <li>o bucatarie dotata cu toate cele necesare gatitului ( de la farfurii si tacamuri la frigider si aragaz
+                        etc) in regim self-service
+                    </li>
+                    <li>12 locuri repartizate in 4 camere </li>
+                    <li>2 bai noi cu cabina de dus, WC si bideu</li>
+                    <li>pentru evenimente putem pregatii pentru aperitive si macare contra cost</li>
+                    <li>TV si internet , telefon </li>
+                    <li>la cerere se poate pune la dispozitie masina personala pentru vizite in punctele turistice din zona Clujului
+                        <p>De exemplu:</p>
+                        <li>Salina Turda</li>
+                        <li>Cheile Turzii</li>
+                        <li>Baile Cojocna</li>
+                        <li>Tur al Clujului ka Muzeul Satului </li>
+                        <li>Gradina Botanica </li>
+                        <li> Cetatuie </li>
+                        <li> Parc Central </li>
+                        <li> Muzeul deStiinde ale NAturii</li>
+                        <li>Muzeul Etnografic al Transilvaniei</li>
+                        <li>Turnul Croitorilor </li>
+                        <li> Electric Castle Bontida "Castelul BANFI</li>
+                        <li>Dabaca</li>
+                    </li>
+                </ul>
+                <p>Preturile sunt bune si negociabile telefonic </p>
+                <p>Se pot organiza evenimente ca : majorate , botez restrans cununie de la 25 la 30 de persoane , zile nastere
+                    sau pensiunare cu perieteni m colegi si nunti de aur si de argitn , team buildinguri in weekend pentru
+                    grupurile sub 30 persoane
+                </p>
+
+            </aside>
+
+            <div class="testimoniale">
+                <div id="sageataSt">
+                    <b>
+                        <</b>
+                </div>
+                <div id="sageataDr">
+                    <b>></b>
+                </div>
+                <div id="circle1"></div>
+                <div id="circle2"></div>
+                <div id="circle3"></div>
+                <p id="text1"></p>
+                <p id="text2"></p>
+                <p id="text3"></p>
+            </div>
+            <div id="allTestimonials">
+                <i class="fa fa-angellist"></i>
+                <span>Show all testimonials</span>
+            </div>
+        </div>
+
+        <footer id="myFooter">
+            <div class="topFooterContainer">
+                <address>str. NumeleStrazii nr.
+                    <br>Localitate: Campenesti
+                    <br> Jud. Cluj </address>
+                <address>Tel. mobil: 0754 xxxxxx
+                    <br> Tel. Fix: 0264 yyyyyy </address>
+                <address>E-mail contact: paula@yahoo.com
+                    <br> GPS coordinates:
+                    <br> N
+                    <sup>o</sup>
+                    <br> S
+                    <sup>o</sup>
+                </address>
+                <div id="map"></div>
+            </div>
+            <div class="botFooterContainer">
+
+            </div>
+            <div class="copyright"></div>
+        </footer>
+        <div id="meniuRezervare"></div>
+    <!-- </div> -->
+    </div>
+
+    <script src="app-back.js"></script>
+    <script src="app.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDafOjHquwfiDC9NmZGf3ZWaLjsNOqw8kw&callback=myMap"
+        type="text/javascript"></script>
+</body>
+
+</html>
