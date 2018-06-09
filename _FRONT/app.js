@@ -322,6 +322,31 @@ bigImage.addEventListener('click', function () {
 //     }
 
 // });
+addEventListener('scroll',
+    function appear() {
+        if (window.scrollY >= (0.2 * window.innerHeight)) {
+            //console.log('aside');
+            document.getElementById('myAside').style.transition = '2s ease';
+            document.getElementById('myAside').style.opacity = 1;
+
+            document.querySelector('main').style.transition = 'opacity 2s ease';
+            document.querySelector('main').style.opacity = 1;
+        }
+        if (window.scrollY >= (1.1 * window.innerHeight)) {
+            //console.log('testimoniale');
+            document.querySelector('.testimoniale').style.transition = 'opacity 2s ease';
+            document.querySelector('.testimoniale').style.opacity = 1;
+        }
+        if (window.scrollY < (0.3 * window.innerHeight)) {
+            init();
+            // duplicates = true;
+        }
+        if (window.scrollY <= window.innerHeight && (document.querySelector('.imageBig').style.display == 'block'
+            || document.querySelector('.oferte').style.display == 'block')) {
+            window.scrollTo({ left: 0, top: window.innerHeight, behavior: 'smooth' });
+        }
+    });
+
 var clicker = addEventListener('click', () => {
     dupli();
     if (bigImage.style.display == 'block') {
@@ -512,31 +537,6 @@ homeButton.addEventListener("click", function () {
     document.getElementById("testiPage").style.display = 'none';
     buttonClass();
 });
-
-addEventListener('scroll',
-    function appear() {
-        if (window.scrollY >= (0.2 * window.innerHeight)) {
-            //console.log('aside');
-            document.getElementById('myAside').style.transition = '2s ease';
-            document.getElementById('myAside').style.opacity = 1;
-
-            document.querySelector('main').style.transition = 'opacity 2s ease';
-            document.querySelector('main').style.opacity = 1;
-        }
-        if (window.scrollY >= (1.1 * window.innerHeight)) {
-            //console.log('testimoniale');
-            document.querySelector('.testimoniale').style.transition = 'opacity 2s ease';
-            document.querySelector('.testimoniale').style.opacity = 1;
-        }
-        if (window.scrollY < (0.3 * window.innerHeight)) {
-            init();
-            // duplicates = true;
-        }
-        if (window.scrollY <= window.innerHeight && (document.querySelector('.imageBig').style.display == 'block'
-            || document.querySelector('.oferte').style.display == 'block')) {
-            window.scrollTo({ left: 0, top: window.innerHeight, behavior: 'smooth' });
-        }
-    });
 
 !(function copyright() {
     var date = new Date().getFullYear();
