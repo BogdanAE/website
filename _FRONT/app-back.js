@@ -1,7 +1,7 @@
 !(() => {
     $.ajax({
         type: "GET",
-        url: `/testimonials`,
+        url: '/testimonials',
         dataType: 'json',
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
@@ -49,15 +49,15 @@
             document.getElementById('loading').style.display = 'none';
         }
     });
-    // $.ajax({
-    //     type: "GET",
-    //     url: "http://localhost:3000/images",
-    //     dataType: 'json',
-    //     success: (data) => {
-    //         console.log(data);
-    //         document.getElementById('img1').src = data[0].path
-    //     }
-    // });
+    $.ajax({
+        type: "GET",
+        url: "/images",
+        dataType: 'json',
+        success: (data) => {
+            console.log(data);
+            document.getElementById('img1').src = data[0].path
+        }
+    });
 })(); 
 
 
