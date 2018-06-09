@@ -3,14 +3,15 @@ var mongoose = require('./mongoose');
 var model = require('./model');
 var service = require('./service');
 var bodyParser = require('body-parser');
+const path = require('path');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
 
 mongoose.connect();
 
-app.use('/', express.static('../_FRONT'));
-app.use('/upload',express.static('./addImage.html'));
+app.use('/', express.static(path.join(__dirname, '../_FRONT')));
+app.use('/upload',express.static(path.join(__dirname,'./addImage.html')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
