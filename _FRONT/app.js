@@ -237,7 +237,7 @@ oferte1.addEventListener('click', function () {
 
 about.addEventListener("click", function () {
     enabled = false;
-    if(document.querySelector(".reservationPage").style.display == 'block'){
+    if (document.querySelector(".reservationPage").style.display == 'block') {
         document.querySelector(".reservationPage").style.display = 'none';
     }
     document.getElementById("aboutPage").style.display = 'block';
@@ -287,17 +287,23 @@ function createBigImage(imgValue) {
 close.addEventListener('click', function () {
     document.querySelector(".imageBig").style.display = "none";
     document.body.style.filter = "grayscale(0%)";
-    canICloseIt = false;
-});
-
-bigImage.addEventListener('click', function () {
-    document.querySelector(".imageBig").style.display = "none";
     allGray.style.filter = "grayscale(0%)";
     canICloseIt = false;
 });
 
-addEventListener('click', () => {
+// bigImage.addEventListener('click', function () {
+//     document.querySelector(".imageBig").style.display = "none";
+//     allGray.style.filter = "grayscale(0%)";
+//     canICloseIt = false;
+// });
+
+var clicker = addEventListener('click', () => {
     dupli();
+    if (bigImage.style.display == 'block') {
+        removeEventListener('click', clicker, { passive: true });
+        canICloseIt = false;
+        canICloseIt2 =false;
+    }
     if (canICloseIt) {
         setTimeout(() => {
             if (document.querySelector(".imageBig").style.display == "block") {
@@ -458,7 +464,7 @@ function myMap() {
 
 rezerva.addEventListener("click", function () {
     enabled = false;
-    if(document.getElementById("aboutPage").style.display == 'block'){
+    if (document.getElementById("aboutPage").style.display == 'block') {
         document.getElementById("aboutPage").style.display = 'none';
     }
     document.querySelector(".reservationPage").style.display = 'block';
@@ -608,3 +614,4 @@ testiBut.addEventListener('click', () => {
 //-----------------------------------------------------------------------------------------
 //----------------------END TESTIMONIALS PAGE--------------------------------------------------
 //-----------------------------------------------------------------------------------------
+
