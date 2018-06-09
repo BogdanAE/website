@@ -296,8 +296,39 @@ bigImage.addEventListener('click', function () {
     canICloseIt = false;
 });
 
-addEventListener('click', () => {
+// addEventListener('click', () => {
+//     dupli();
+//     if (canICloseIt) {
+//         setTimeout(() => {
+//             if (document.querySelector(".imageBig").style.display == "block") {
+//                 document.querySelector(".imageBig").style.display = "none";
+//                 document.body.style.filter = "grayscale(0%)";
+//                 allGray.style.filter = "grayscale(0%)";
+//                 canICloseIt = false;
+//             }
+//         }, 60);
+//     }
+//     if (canICloseIt2) {
+//         setTimeout(() => {
+//             if (document.querySelector(".oferte").style.display == "block") {
+//                 document.querySelector(".oferte").style.display = "none";
+//                 document.body.style.filter = "grayscale(0%)";
+//                 allGray.style.filter = "grayscale(0%)";
+//                 document.getElementById("myHeader").style.filter = "grayscale(0%)";
+//                 canICloseIt2 = false;
+//                 buttonClass();
+//             }
+//         }, 60)
+//     }
+
+// });
+var clicker = addEventListener('click', () => {
     dupli();
+    if (bigImage.style.display == 'block') {
+        removeEventListener('click', clicker, { passive: true });
+        canICloseIt = false;
+        canICloseIt2 = false;
+    }
     if (canICloseIt) {
         setTimeout(() => {
             if (document.querySelector(".imageBig").style.display == "block") {
@@ -608,3 +639,47 @@ testiBut.addEventListener('click', () => {
 //-----------------------------------------------------------------------------------------
 //----------------------END TESTIMONIALS PAGE--------------------------------------------------
 //-----------------------------------------------------------------------------------------
+
+
+function changeImg(value) {
+    if (value == 1) {
+        if (document.querySelector(".imageBig").style.background == 'url("./srcs/1.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/6.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/6.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/5.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/5.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/4.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/4.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/3.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/3.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/2.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/2.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/1.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+    }
+    else if (value == 2) {
+        if (document.querySelector(".imageBig").style.background == 'url("./srcs/1.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/2.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/2.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/3.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/3.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/4.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/4.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/5.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/5.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/6.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/6.jpg") 0% 0% / 100% 100% no-repeat') {
+            document.querySelector(".imageBig").style.background = 'url("./srcs/1.jpg") 0% 0% / 100% 100% no-repeat'
+        }
+    }
+}
