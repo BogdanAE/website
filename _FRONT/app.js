@@ -173,13 +173,13 @@ function buttonClass() {
 }
 //------------END VALIDATION-------------------------------
 
-function closeCurrentWindow(currentWindow) {
-    if (currentWindow == 'big') {
-        console.log('aici');
-        document.querySelector('.imageBig').style.display = 'none';
-        allGray.style.filter = "grayscale(0%)";
-    }
-}
+// function closeCurrentWindow(currentWindow) {
+//     if (currentWindow == 'big') {
+//         console.log('aici');
+//         document.querySelector('.imageBig').style.display = 'none';
+//         allGray.style.filter = "grayscale(0%)";
+//     }
+// }
 
 init();
 
@@ -288,13 +288,14 @@ close.addEventListener('click', function () {
     document.querySelector(".imageBig").style.display = "none";
     document.body.style.filter = "grayscale(0%)";
     canICloseIt = false;
+    allGray.style.filter = "grayscale(0%)";
 });
 
-bigImage.addEventListener('click', function () {
-    document.querySelector(".imageBig").style.display = "none";
-    allGray.style.filter = "grayscale(0%)";
-    canICloseIt = false;
-});
+// bigImage.addEventListener('click', function () {
+//     document.querySelector(".imageBig").style.display = "none";
+//     allGray.style.filter = "grayscale(0%)";
+//     canICloseIt = false;
+// });
 
 // addEventListener('click', () => {
 //     dupli();
