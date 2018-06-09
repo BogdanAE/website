@@ -47,7 +47,7 @@ app.get('/connect', (req, res) => {
 app.post('/', (req, res) => {
     service.createTesti(req.body);
     console.log(req.body);
-   // res.redirect('/');
+    res.redirect('/');
 });
 
 app.post('/upload', (req, res) => {

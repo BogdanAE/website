@@ -1,6 +1,5 @@
 const model = require('./model');
 const fs = require('fs');
-const path = require("path");
 
 var createTesti;
 var getTesti;
@@ -25,12 +24,12 @@ createTesti = (data) => {
 
 postImage = (i) => {
     var path = model.image({
-        path: '../_FRONT/srcs/' + i.i + '.jpg',
+        pathIMG: './srcs/' + i.i + '.jpg',
     });
-    path.save((err, path) => {
+    path.save((err, pathIMG) => {
         if(err)
             console.log(err)
-        console.log(path);
+        console.log(pathIMG);
     });
 }
 
@@ -39,7 +38,7 @@ getImage = (res) => {
         if(err){
             console.log(err);
         }
-        res.send(data   );
+        res.send(data);
         console.log('IMAGES REQUESTED');
     })
 };

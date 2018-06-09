@@ -195,7 +195,7 @@
         border: 2px solid black;
         box-sizing: content-box;
         border-radius: 3px;
-        overflow: hidden;
+
     }
     #allTestimonials {
         height: auto;
@@ -220,6 +220,12 @@
         transform: scale(1.2);
         color: #e62739;
         text-shadow: 1px 1px 2px #e62739;
+    }
+    #testiDiv{
+        overflow: hidden;
+        /* text-align: justify; */
+        max-width: 35vw;
+        word-wrap: break-word;
     }
     #allTestimonials > span {
         color: rgb(0, 87, 109);

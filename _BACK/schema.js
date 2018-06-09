@@ -8,7 +8,7 @@ var testiS = mongoose.Schema({
 });
 
 var images = mongoose.Schema({
-    path: String
+    pathIMG: String
 })
 
 module.exports = {

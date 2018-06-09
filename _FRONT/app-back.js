@@ -28,10 +28,11 @@
             for (let i = 1; i <= 3; i++) {
                 var div = document.createElement('div');
                 document.getElementById('text' + i).appendChild(div);
+                div.setAttribute('id','testiDiv');
                 var figure = document.createElement('figure');
                 div.appendChild(figure);
                 var img = document.createElement('img');
-                img.src = data[data.length - i ].avatar;
+                img.src = data[data.length - i].avatar;
                 img.setAttribute('height', '150px');
                 img.setAttribute('border', '2px');
                 figure.appendChild(img);
@@ -39,10 +40,10 @@
                 figcaption.innerHTML = data[data.length - i].name;
                 figure.appendChild(figcaption);
                 var title = document.createElement('h4');
-                title.innerHTML = 'Titlu:  <u>' + data[data.length - i ].title + '</u>';
+                title.innerHTML = 'Titlu:  <u>' + data[data.length - i].title + '</u>';
                 div.appendChild(title);
                 var txt = document.createElement('p');
-                txt.innerHTML = '<b>A spus:</b>  <q>' + data[data.length - i - 1].message + '</q>';
+                txt.innerHTML = '<b>A spus:</b>  <q>' + data[data.length - i].message + '</q>';
                 div.appendChild(txt);
             }
             document.getElementById('loaded').style.display = 'block';
@@ -55,10 +56,12 @@
         dataType: 'json',
         success: (data) => {
             console.log(data);
-            document.getElementById('img1').src = data[0].path
+            for (let i = 0; i < data.length - 1; i++) {
+                document.getElementById('img' + (i + 1)).src = data[i].pathIMG;
+            }
         }
     });
-})(); 
+})();
 
 
 
