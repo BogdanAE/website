@@ -1,6 +1,4 @@
 //-------GLOBALS----------------------------------
-var media = window.matchMedia('(max-width: 1300px)');
-var media2 = window.matchMedia('(min-width: 1301px)');
 var oferte1 = document.getElementById("oferte");
 var ofertaClass = document.querySelector(".oferte");
 var upButton = document.querySelector(".buttonUp");
@@ -37,7 +35,16 @@ var testiBut = document.getElementById('allTestimonials');
     document.getElementById('testiPage').style.display = 'none';
 })();
 
-
+var persons = new Object({
+    person1: {
+        text: ['Mi-a placut foarte mult tot . As reveni cu placere!!', 'Cea mai tare pensiune din Cluj!! Veniti cat mai multi',
+            'Mancarea foarte buna , oameni faini si relaxare !!!'],
+        avatar: ['https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807__340.png', 'https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png',
+            'https://cdn.pixabay.com/photo/2018/05/19/22/03/man-3414477_960_720.png'],
+        title: ['Recomand', 'FRUMOS', ' O sa REVENIM!'],
+        name: ['Paula Miereanu', 'Epure Bogdan-Alin', 'Grigore Grigorescu']
+    }
+});
 //-------END GLOBALS----------------------------------
 
 
@@ -57,7 +64,31 @@ addEventListener("keydown", function (val) {
         init();
 });
 
-
+function logScrollDirection() {
+    var previous = window.scrollY;
+    window.addEventListener('scroll', function () {
+        window.scrollY > previous ? direction = "down" : direction = "up";
+        previous = 10 + window.scrollY;
+        // console.log(direction);
+        if (direction == "down") {
+            if (window.scrollY >= 0 && window.scrollY <= maxHeight && enabled == true) {
+                window.scrollTo({ top: window.innerHeight, left: 0, behavior: 'smooth' });
+            }
+        }
+        if (window.scrollY === (maxHeight))
+            document.querySelector('.buttonContainer').style.position = 'fixed';
+        else if (window.scrollY < (maxHeight))
+            document.querySelector('.buttonContainer').style.position = 'static';
+        if (window.scrollY >= maxHeight)
+            upButton.style.display = 'block';
+        else if (window.scrollY < maxHeight / 1.5) {
+            upButton.style.display = 'none';
+            document.getElementById('myAside').style.opacity = 0;
+            document.querySelector('main').style.opacity = 0;
+            document.querySelector('.testimoniale').style.opacity = 0;
+        }
+    });
+}
 
 function checkIt(enabled) {
     if (enabled == true) {
@@ -206,7 +237,7 @@ oferte1.addEventListener('click', function () {
 
 about.addEventListener("click", function () {
     enabled = false;
-    if (document.querySelector(".reservationPage").style.display == 'block') {
+    if(document.querySelector(".reservationPage").style.display == 'block'){
         document.querySelector(".reservationPage").style.display = 'none';
     }
     document.getElementById("aboutPage").style.display = 'block';
@@ -232,207 +263,6 @@ document.querySelector(".oferte").addEventListener("click", function () {
 });
 
 //----------------IMAGES------------------------------------------
-
-
-// if (enabled == true)
-// {
-//     logScrollDirection();
-// }
-
-upButton.addEventListener('click', function () {
-    window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-    });
-});
-
-//------------------GOOGLE MAPS----------------------------------
-function myMap() {
-    var mapOptions = {
-        center: new google.maps.LatLng(46.835976, 23.715579),
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.HYBRID
-    }
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    var marker = new google.maps.Marker({
-        position: { lat: 46.835976, lng: 23.715579 },
-        map: map
-    })
-};
-//------------------END GOOGLE MAPS----------------------------------
-
-rezerva.addEventListener("click", function () {
-    enabled = false;
-    if (document.getElementById("aboutPage").style.display == 'block') {
-        document.getElementById("aboutPage").style.display = 'none';
-    }
-    document.querySelector(".reservationPage").style.display = 'block';
-    // console.log(enabled);
-    document.querySelector('.scrollDiv').style.height = '100%';
-    checkIt(enabled);
-    window.scroll(0, 0);
-    buttonClass();
-});
-
-homeButton.addEventListener("click", function () {
-    enabled = true;
-    //console.log(enabled);
-    checkIt(enabled);
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    init();
-    document.querySelector('.scrollDiv').style.height = 'calc(100vh + 50px)';
-    document.getElementById('aboutPage').style.display = 'none';
-    document.querySelector('.reservationPage').style.display = 'none';
-    document.getElementById("testiPage").style.display = 'none';
-    buttonClass();
-});
-
-!(function copyright() {
-    var date = new Date().getFullYear();
-    //console.log(date);
-    document.querySelector('.copyright').innerHTML = '&copy' + date + ' Epure Bogdan-Alin';
-})();
-
-addEventListener('resize', () => {
-    //console.log('overflow');
-    if (document.querySelector('.oferteM').offsetWidth < 500)
-        document.querySelector('.oferteM:nth-child(2)').style.overflowY = "scroll";
-    else if (document.querySelector('.oferteM').offsetWidth >= 500)
-        document.querySelector('.oferteM:nth-child(2)').style.overflowY = "hidden";
-});
-
-reservDate();
-function reservDate() {
-    var dt = new Date();
-    var year = dt.getFullYear();
-    var month = dt.getMonth() + 1;
-    var day = dt.getDay();
-
-    if (dt.getMonth() < 10)
-        month = '0' + month;
-    if (dt.getDay() < 10)
-        day = '0' + dt.getDay();
-
-    document.getElementById('startDate').setAttribute('value', year + '-' + month + '-' + day);
-    day = dt.getDay();
-    if (dt.getDay() < 10)
-        day = '0' + day;
-    document.getElementById('endDate').setAttribute('value', year + '-' + month + '-' + day);
-}
-
-//-----------------------------------------------------------------------------------------
-//----------------------TESTIMONIALS PAGE--------------------------------------------------
-//-----------------------------------------------------------------------------------------
-
-testiBut.addEventListener('click', () => {
-    enabled = false;
-    document.getElementById("testiPage").style.display = 'block';
-    document.querySelector('.scrollDiv').style.height = '100%';
-    checkIt(enabled);
-    window.scroll(0, 0);
-    buttonClass();
-    // createTestiPage();
-});
-
-// function createTesti() {
-//     for (let i = 1; i <= 3; i++) {
-//         var div = document.createElement('div');
-//         document.getElementById('text' + i).appendChild(div);
-//         var figure = document.createElement('figure');
-//         div.appendChild(figure);
-//         var img = document.createElement('img');
-//         img.src = persons.person1.avatar[i - 1];
-//         img.setAttribute('height', '150px');
-//         img.setAttribute('border', '2px');
-//         figure.appendChild(img);
-//         var figcaption = document.createElement('figcaption');
-//         figcaption.innerHTML = persons.person1.name[i - 1];
-//         figure.appendChild(figcaption);
-//         var title = document.createElement('h4');
-//         title.innerHTML = 'Titlu:  <u>' + persons.person1.title[i - 1] + '</u>';
-//         div.appendChild(title);
-//         var txt = document.createElement('p');
-//         txt.innerHTML = '<b>A spus:</b>  <q>' + persons.person1.text[i - 1] + '</q>';
-//         div.appendChild(txt);
-//     }
-// }
-
-
-// function createTestiPage() {
-//     let vf = persons.person1.text.length;
-//     if (vf != document.querySelectorAll('#testiPage > div').length) {
-//         for (let i = 1; i <= 3; i++) {
-//             var div = document.createElement('div');
-//             document.getElementById("testiPage").appendChild(div);
-//             div.setAttribute('id', 'divv');
-//             var figure = document.createElement('figure');
-//             div.appendChild(figure);
-//             var img = document.createElement('img');
-//             img.src = persons.person1.avatar[i - 1];
-//             img.setAttribute('height', '150px');
-//             img.setAttribute('border', '2px');
-//             figure.appendChild(img);
-//             var figcaption = document.createElement('figcaption');
-//             figcaption.innerHTML = persons.person1.name[i - 1];
-//             figure.appendChild(figcaption);
-//             var title = document.createElement('h4');
-//             title.innerHTML = 'Titlu:  <u>' + persons.person1.title[i - 1] + '</u>';
-//             div.appendChild(title);
-//             var txt = document.createElement('p');
-//             txt.innerHTML = '<b>A spus:</b>  <q>' + persons.person1.text[i - 1] + '</q>';
-//             div.appendChild(txt);
-//         }
-//     }
-// }
-
-//-----------------------------------------------------------------------------------------
-//----------------------END TESTIMONIALS PAGE--------------------------------------------------
-//-----------------------------------------------------------------------------------------
-
-function changeImg(value) {
-    if (value == 1) {
-        if (document.querySelector(".imageBig").style.background == 'url("./srcs/1.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/6.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/6.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/5.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/5.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/4.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/4.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/3.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/3.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/2.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/2.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/1.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-    }
-    else if (value == 2) {
-        if (document.querySelector(".imageBig").style.background == 'url("./srcs/1.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/2.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/2.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/3.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/3.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/4.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/4.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/5.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/5.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/6.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-        else if (document.querySelector(".imageBig").style.background == 'url("./srcs/6.jpg") 0% 0% / 100% 100% no-repeat') {
-            document.querySelector(".imageBig").style.background = 'url("./srcs/1.jpg") 0% 0% / 100% 100% no-repeat'
-        }
-    }
-}
-
 var canICloseIt = false;
 var canICloseIt2 = false;
 function createBigImage(imgValue) {
@@ -457,23 +287,17 @@ function createBigImage(imgValue) {
 close.addEventListener('click', function () {
     document.querySelector(".imageBig").style.display = "none";
     document.body.style.filter = "grayscale(0%)";
+    canICloseIt = false;
+});
+
+bigImage.addEventListener('click', function () {
+    document.querySelector(".imageBig").style.display = "none";
     allGray.style.filter = "grayscale(0%)";
     canICloseIt = false;
 });
 
-// bigImage.addEventListener('click', function () {
-//     document.querySelector(".imageBig").style.display = "none";
-//     allGray.style.filter = "grayscale(0%)";
-//     canICloseIt = false;
-// });
-
-var clicker = addEventListener('click', () => {
+addEventListener('click', () => {
     dupli();
-    if (bigImage.style.display == 'block') {
-        removeEventListener('click', clicker, { passive: true });
-        canICloseIt = false;
-        canICloseIt2 = false;
-    }
     if (canICloseIt) {
         setTimeout(() => {
             if (document.querySelector(".imageBig").style.display == "block") {
@@ -499,6 +323,22 @@ var clicker = addEventListener('click', () => {
 
 });
 //----------------------END IMAGE--------------------------------------------------
+
+// if (enabled == true)
+// {
+//     logScrollDirection();
+// }
+
+logScrollDirection();
+
+upButton.addEventListener('click', function () {
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    });
+});
+
 
 //-------------CAROUSEL--------------------------------------
 setInterval(function () {
@@ -601,44 +441,46 @@ SS.addEventListener("click", function () {
 });
 //-------------END CAROUSEL--------------------------------------
 
-
-//---------MEDIA QUERY VF---------------------------------------
-var media = window.matchMedia('(max-width: 1300px) and (min-width: 591px)');
-var media2 = window.matchMedia('(min-width: 1301px)');
-
-
-logScrollDirection();
-function logScrollDirection() {
-    var previous = window.scrollY;
-    window.addEventListener('scroll', function () {
-        window.scrollY > previous ? direction = "down" : direction = "up";
-        if (media.matches) {
-            previous = 25 + window.scrollY;
-        }
-        if (media2.matches) {
-            previous = 15 + window.scrollY;
-            // document.querySelector('.scrollDiv').style.height = "calc(100vh + 100px)";
-        }
-        // console.log(direction);
-        if (direction == "down") {
-            if (window.scrollY >= 0 && window.scrollY <= maxHeight && enabled == true) {
-                window.scrollTo({ top: window.innerHeight, left: 0, behavior: 'smooth' });
-            }
-        }
-        if (window.scrollY === (maxHeight))
-            document.querySelector('.buttonContainer').style.position = 'fixed';
-        else if (window.scrollY < (maxHeight))
-            document.querySelector('.buttonContainer').style.position = 'static';
-        if (window.scrollY >= maxHeight)
-            upButton.style.display = 'block';
-        else if (window.scrollY < maxHeight / 1.5) {
-            upButton.style.display = 'none';
-            document.getElementById('myAside').style.opacity = 0;
-            document.querySelector('main').style.opacity = 0;
-            document.querySelector('.testimoniale').style.opacity = 0;
-        }
-    });
+//------------------GOOGLE MAPS----------------------------------
+function myMap() {
+    var mapOptions = {
+        center: new google.maps.LatLng(46.835976, 23.715579),
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    }
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    var marker = new google.maps.Marker({
+        position: { lat: 46.835976, lng: 23.715579 },
+        map: map
+    })
 };
+//------------------END GOOGLE MAPS----------------------------------
+
+rezerva.addEventListener("click", function () {
+    enabled = false;
+    if(document.getElementById("aboutPage").style.display == 'block'){
+        document.getElementById("aboutPage").style.display = 'none';
+    }
+    document.querySelector(".reservationPage").style.display = 'block';
+    // console.log(enabled);
+    document.querySelector('.scrollDiv').style.height = '100%';
+    checkIt(enabled);
+    window.scroll(0, 0);
+    buttonClass();
+});
+
+homeButton.addEventListener("click", function () {
+    enabled = true;
+    //console.log(enabled);
+    checkIt(enabled);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    init();
+    document.querySelector('.scrollDiv').style.height = 'calc(100vh + 50px)';
+    document.getElementById('aboutPage').style.display = 'none';
+    document.querySelector('.reservationPage').style.display = 'none';
+    document.getElementById("testiPage").style.display = 'none';
+    buttonClass();
+});
 
 addEventListener('scroll',
     function appear() {
@@ -665,5 +507,104 @@ addEventListener('scroll',
         }
     });
 
+!(function copyright() {
+    var date = new Date().getFullYear();
+    //console.log(date);
+    document.querySelector('.copyright').innerHTML = '&copy' + date + ' Epure Bogdan-Alin';
+})();
+
+addEventListener('resize', () => {
+    //console.log('overflow');
+    if (document.querySelector('.oferteM').offsetWidth < 500)
+        document.querySelector('.oferteM:nth-child(2)').style.overflowY = "scroll";
+    else if (document.querySelector('.oferteM').offsetWidth >= 500)
+        document.querySelector('.oferteM:nth-child(2)').style.overflowY = "hidden";
+});
+
+reservDate();
+function reservDate() {
+    var dt = new Date();
+    var year = dt.getFullYear();
+    var month = dt.getMonth() + 1;
+    var day = dt.getDay();
+
+    if (dt.getMonth() < 10)
+        month = '0' + month;
+    if (dt.getDay() < 10)
+        day = '0' + dt.getDay();
+
+    document.getElementById('startDate').setAttribute('value', year + '-' + month + '-' + day);
+    day = dt.getDay();
+    if (dt.getDay() < 10)
+        day = '0' + day;
+    document.getElementById('endDate').setAttribute('value', year + '-' + month + '-' + day);
+}
+
+//-----------------------------------------------------------------------------------------
+//----------------------TESTIMONIALS PAGE--------------------------------------------------
+//-----------------------------------------------------------------------------------------
+
+testiBut.addEventListener('click', () => {
+    enabled = false;
+    document.getElementById("testiPage").style.display = 'block';
+    document.querySelector('.scrollDiv').style.height = '100%';
+    checkIt(enabled);
+    window.scroll(0, 0);
+    buttonClass();
+    // createTestiPage();
+});
+
+// function createTesti() {
+//     for (let i = 1; i <= 3; i++) {
+//         var div = document.createElement('div');
+//         document.getElementById('text' + i).appendChild(div);
+//         var figure = document.createElement('figure');
+//         div.appendChild(figure);
+//         var img = document.createElement('img');
+//         img.src = persons.person1.avatar[i - 1];
+//         img.setAttribute('height', '150px');
+//         img.setAttribute('border', '2px');
+//         figure.appendChild(img);
+//         var figcaption = document.createElement('figcaption');
+//         figcaption.innerHTML = persons.person1.name[i - 1];
+//         figure.appendChild(figcaption);
+//         var title = document.createElement('h4');
+//         title.innerHTML = 'Titlu:  <u>' + persons.person1.title[i - 1] + '</u>';
+//         div.appendChild(title);
+//         var txt = document.createElement('p');
+//         txt.innerHTML = '<b>A spus:</b>  <q>' + persons.person1.text[i - 1] + '</q>';
+//         div.appendChild(txt);
+//     }
+// }
 
 
+// function createTestiPage() {
+//     let vf = persons.person1.text.length;
+//     if (vf != document.querySelectorAll('#testiPage > div').length) {
+//         for (let i = 1; i <= 3; i++) {
+//             var div = document.createElement('div');
+//             document.getElementById("testiPage").appendChild(div);
+//             div.setAttribute('id', 'divv');
+//             var figure = document.createElement('figure');
+//             div.appendChild(figure);
+//             var img = document.createElement('img');
+//             img.src = persons.person1.avatar[i - 1];
+//             img.setAttribute('height', '150px');
+//             img.setAttribute('border', '2px');
+//             figure.appendChild(img);
+//             var figcaption = document.createElement('figcaption');
+//             figcaption.innerHTML = persons.person1.name[i - 1];
+//             figure.appendChild(figcaption);
+//             var title = document.createElement('h4');
+//             title.innerHTML = 'Titlu:  <u>' + persons.person1.title[i - 1] + '</u>';
+//             div.appendChild(title);
+//             var txt = document.createElement('p');
+//             txt.innerHTML = '<b>A spus:</b>  <q>' + persons.person1.text[i - 1] + '</q>';
+//             div.appendChild(txt);
+//         }
+//     }
+// }
+
+//-----------------------------------------------------------------------------------------
+//----------------------END TESTIMONIALS PAGE--------------------------------------------------
+//-----------------------------------------------------------------------------------------
