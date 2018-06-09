@@ -433,18 +433,7 @@
         background-color: white;
         z-index: 99999;
     }
-    #divv {
-        position: static;
-        height: 50%;
-        width: 50%;
-        border: 1px solid black;
-        margin-left: 25%;
-        margin-top: 5%;
-        box-sizing: border-box;
-        padding: 2%;
-        word-wrap: break-word;
-        text-align: justify;
-    }
+    
 }
 
 /*---------------------------------------------------------
@@ -1325,4 +1314,17 @@
 @keyframes blink {
     0%{transform: scale(4.5)}
     10%{transform: scale(6)}
+}
+
+#divv {
+    position: static;
+    height: 50%;
+    width: 50%;
+    border: 1px solid black;
+    margin-left: 25%;
+    margin-top: 5%;
+    box-sizing: border-box;
+    padding: 2%;
+    word-wrap: break-word;
+    text-align: justify;
 }
