@@ -49,15 +49,15 @@
             document.getElementById('loading').style.display = 'none';
         }
     });
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:3000/images",
-        dataType: 'json',
-        success: (data) => {
-            console.log(data);
-            document.getElementById('img1').src = data[0].path
-        }
-    });
+    // $.ajax({
+    //     type: "GET",
+    //     url: "http://localhost:3000/images",
+    //     dataType: 'json',
+    //     success: (data) => {
+    //         console.log(data);
+    //         document.getElementById('img1').src = data[0].path
+    //     }
+    // });
 })(); 
 
 
