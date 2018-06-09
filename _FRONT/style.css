@@ -442,6 +442,8 @@
         margin-top: 5%;
         box-sizing: border-box;
         padding: 2%;
+        word-wrap: break-word;
+        text-align: justify;
     }
 }
 
