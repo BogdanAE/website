@@ -1,4 +1,4 @@
-@media (min-width: 900px) {
+@media (min-width: 1301px) {
     body {
         margin-top: 0px;
         margin-bottom: 0px;
@@ -451,7 +451,7 @@
 ----------------------PHONE AND SMALL DEVICES--------------
 -----------------------------------------------------------*/
 
-@media(max-width: 899px) and (min-width: 591px) {
+@media(max-width: 1300px) and (min-width: 591px) {
     body {
         margin-top: 0px;
         margin-bottom: 0px;
