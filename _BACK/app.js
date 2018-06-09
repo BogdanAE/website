@@ -9,7 +9,7 @@ var PORT = process.env.PORT || 3000;
 
 mongoose.connect();
 
-app.use('/', express.static(__dirname + '../_FRONT'));
+app.use('/', express.static(__dirname + './_FRONT'));
 app.use('/upload',express.static(__dirname + './addImage.html'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
