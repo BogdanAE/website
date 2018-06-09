@@ -1,7 +1,7 @@
 !(() => {
     $.ajax({
         type: "GET",
-        url: "http://localhost:3000/testimonials",
+        url: `/testimonials`,
         dataType: 'json',
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
