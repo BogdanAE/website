@@ -15,7 +15,7 @@
     header {
         top: 35px;
         width: auto;
-        height: calc(100vh - 90px);
+        height: calc(100vh);
         background: url("./srcs/123.jpg");
         background-size: cover;
     }
@@ -290,8 +290,8 @@
     .xClose {
         position: relative;
         text-align: center;
-        width: 20px;
-        height: 25px;
+        width: 40px;
+        height: 40px;
         background-color: black;
         color: white;
         float: right;
@@ -303,8 +303,8 @@
         content: "×";
         position: absolute;
         margin-top: -8px;
-        font-size: 35px;
-        margin-left: -10px;
+        font-size: 3em;
+        margin-left: -13px;
         font-family: Arial;
     }
     .oferteM {
