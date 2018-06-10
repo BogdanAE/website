@@ -209,7 +209,7 @@ oferte1.addEventListener('click', function () {
         document.getElementById("myHeader").style.filter = "grayscale(100%)";
         scrollTo({ left: 0, top: window.innerHeight, behavior: 'smooth' });
     }
-    else if (!duplicates) {
+    else if (duplicates == false) {
         document.querySelector(".oferte").style.display = "none";
         allGray.style.filter = "grayscale(0%)";
         document.getElementById("myHeader").style.filter = "grayscale(0%)";

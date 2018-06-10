@@ -1,4 +1,8 @@
-@media (min-width: 1301px) {
+/*---------------------------------------------------------
+----------------------UNDER 500px DEVICES------------------
+-----------------------------------------------------------*/
+
+@media (max-width: 800px) {
     body {
         margin-top: 0px;
         margin-bottom: 0px;
@@ -7,12 +11,6 @@
         padding: 0;
         background-color: #f0eceb;
         user-select: none;
-    }
-    #loading {
-        display: block;
-    }
-    #loaded {
-        display: none;
     }
     header {
         top: 35px;
@@ -55,9 +53,18 @@
         margin-top: 50px;
     }
     main {
-        float: right;
-        width: 62vw;
+        width: 100%;
+        margin-top: 90px;
     }
+    main :nth-child(1)  {
+        width: 100%;
+        float: left;
+    }
+    main :nth-child(2) {
+        width: 100%;
+        float: left;
+    }
+    
     #img1, #img2, #img3, #img4, #img5, #img6 {
         border-radius: 3px;
         max-width: 70%;
@@ -65,11 +72,13 @@
     }
     aside {
         float: left;
-        width: 28%;
+        margin-top: 25px;
+        width: 85%;
         box-sizing: border-box;
         text-align: justify;
-        box-sizing: content-box;
-        padding: 2.5%;
+        box-sizing: border-box;
+        padding: 5%;
+        margin-left: 7%;
         font-family: 'Roboto Slab', serif;
     }
     footer {
@@ -92,32 +101,39 @@
         padding-top: 8%;
         font-family: 'Poppins', sans-serif;
         font-size: 20px;
-        word-spacing: 10px;
-        letter-spacing: 6px;
+        word-spacing: 5px;
+        letter-spacing: 4px;
     }
     .scrollDiv {
         height: calc(100vh + 50px);
     }
     .buttonContainer {
         background: #bcd5d1;
-        height: 45px;
+        min-height: 110px;
+        height: auto;
         width: 100%;
         padding-top: 10px;
         top: 0px;
         z-index: 99;
         clear: both;
+        padding-bottom: 5px;
     }
+    /* .buttonContainer:nth-child(2){
+        clear: right;
+    } */
+
     .buttonContainer>button {
         font-family: 'Abril Fatface', cursive;
-        font-size: 1.05em;
+        font-size: 2em;
+        /* float: left; */
+        margin-top: 5px;
     }
     #homeB {
-        margin-left: 75px;
+        margin-left: 5px;
     }
     button {
-        float: left;
-        margin-left: 15px;
-        height: 35px;
+        margin-left: 5px;
+        height: auto;
         border: 2px solid rgb(0, 87, 109);
         background: transparent;
         color: rgb(0, 87, 109);
@@ -136,7 +152,7 @@
         box-shadow: 3px 3px 6px rgb(0, 87, 109);
     }
     .rezerva {
-        float: right;
+        /* float: right; */
         margin-right: 50px;
         justify-content: right;
         font-family: 'Abril Fatface', cursive;
@@ -146,16 +162,11 @@
     }
     .verticalImage {
         position: relative;
-        width: 48%;
+        width: 44%;
         height: 100%;
         float: right;
         margin-right: 1%;
-    }
-    main :nth-child(1) :nth-child(1) {
-        margin-top: 75px;
-    }
-    main :nth-child(2) :nth-child(1) {
-        margin-top: 25px;
+        top: 50px;
     }
     .verticalImage :nth-child(n) {
         margin-top: 50px;
@@ -178,6 +189,7 @@
         height: 60%;
         left: 20%;
         top: 5%;
+        z-index: 9999;
     }
     address {
         float: left;
@@ -188,13 +200,14 @@
     }
     .testimoniale {
         float: right;
-        width: 50vw;
+        width: 80vw;
         height: 60vh;
-        margin-right: 6%;
+        margin-right: 10%;
+        margin-left: 10%;
         border: 2px solid black;
         box-sizing: content-box;
         border-radius: 3px;
-
+        overflow: hidden;
     }
     #allTestimonials {
         height: auto;
@@ -203,7 +216,7 @@
         position: relative;
         float: right;
         text-align: center;
-        margin-right: calc((100vw - 40vw)/2 - 90px);
+        margin-right: calc((100vw)/2 - 90px);
         margin-top: 15px;
         margin-bottom: 15px;
         cursor: pointer;
@@ -219,12 +232,6 @@
         transform: scale(1.2);
         color: #e62739;
         text-shadow: 1px 1px 2px #e62739;
-    }
-    #testiDiv{
-        overflow: hidden;
-        /* text-align: justify; */
-        max-width: 35vw;
-        word-wrap: break-word;
     }
     #allTestimonials > span {
         color: rgb(0, 87, 109);
@@ -246,6 +253,26 @@
         background: black;
         border-top: 2px solid gray;
     }
+    #aboutPage {
+        position: absolute;
+        top: 120px;
+        width: 100%;
+        height: calc(100vh - 120px);
+        background-color: #89bdd3;
+        transition: all 1s linear;
+        font-family: 'Roboto Slab', serif;
+    }
+    #testiPage {
+        min-height: calc(100vh - 50px);
+        position: absolute;
+        top: 50px;
+        width: 100%;
+        height: auto;
+        background-color: #89bdd3;
+        transition: all 1s linear;
+        font-family: 'Roboto Slab', serif;
+        text-align: center;
+    }
     .oferte {
         position: fixed;
         transform: translate(35%, 20%);
@@ -265,14 +292,15 @@
     }
     .imageBig {
         position: fixed;
-        transform: translate(20%, 20%);
-        height: 70%;
-        width: 70%;
+        transform: translate(0%, 40%);
+        height: 50%;
+        width: 95%;
         border: 1px solid black;
         background: black;
         opacity: 1;
         z-index: 999;
         color: white;
+        margin-left: 2.5%;
     }
     .xClose {
         position: relative;
@@ -308,10 +336,10 @@
     .buttonUp {
         position: fixed;
         cursor: pointer;
-        right: 5px;
+        right: 2px;
         top: 80%;
-        border: 1px solid black;
-        padding: 5px;
+        border: 2px solid black;
+        padding: 9px;
         border-radius: 5px;
         opacity: 0.9;
         z-index: 100;
@@ -323,7 +351,7 @@
     }
     .buttonUp>i {
         margin-left: 4px;
-        transform: scale(1.5);
+        transform: scale(2.5);
     }
     @keyframes uppy {
         0% {
@@ -369,9 +397,9 @@
     }
     .reservationPage {
         position: absolute;
-        top: 50px;
+        top: 120px;
         width: 100%;
-        height: calc(100vh - 50px);
+        height: calc(100vh - 120px);
         background-color: #89bdd3;
         transition: all 1s linear;
         font-family: 'Roboto Slab', serif;
@@ -384,27 +412,6 @@
     .reservationPage>form>table {
         margin-left: 25%;
         margin-top: 25%;
-    }
-    #aboutPage {
-        position: absolute;
-        top: 50px;
-        width: 100%;
-        height: calc(100vh - 50px);
-        background-color: #89bdd3;
-        transition: all 1s linear;
-        font-family: 'Roboto Slab', serif;
-    }
-    #testiPage {
-        min-height: calc(100vh - 50px);
-        position: absolute;
-        top: 50px;
-        width: 100%;
-        height: auto;
-        background-color: #89bdd3;
-        transition: all 1s linear;
-        font-family: 'Roboto Slab', serif;
-        text-align: center;
-        min-height: 100vh;
     }
     #subBut {
         position: absolute;
@@ -433,43 +440,4 @@
         background-color: white;
         z-index: 99999;
     }
-    
-}
-
-.imageBig > .fa{
-    transform: scale(4.5);
-    cursor: pointer;
-}
-
-.imageBig > .fa-angle-left{
-    position: relative;
-    top: 50%;
-    left: 3.5%;
-    animation: blink 2s linear infinite;
-}
-
-.imageBig > .fa-angle-right{
-    position: relative;
-    float: right;
-    right: 3.5%;
-    top: 50%;
-    animation: blink 2s linear infinite;
-}
-
-@keyframes blink {
-    0%{transform: scale(4.5)}
-    10%{transform: scale(6)}
-}
-
-#divv {
-    position: static;
-    height: 50%;
-    width: 50%;
-    border: 1px solid black;
-    margin-left: 25%;
-    margin-top: 5%;
-    box-sizing: border-box;
-    padding: 2%;
-    word-wrap: break-word;
-    text-align: justify;
 }
