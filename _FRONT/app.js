@@ -16,6 +16,11 @@ var direction;
 var enabled = true;
 var duplicates = false;
 var maxHeight = window.innerHeight;
+var maxHeight2 = window.outerHeight;
+!(() => {
+    console.log(maxHeight, maxHeight2);
+})();
+
 var SD = document.getElementById("sageataDr");
 var SS = document.getElementById("sageataSt");
 var rezerva = document.getElementById("rezB");
@@ -63,30 +68,40 @@ addEventListener("keydown", function (val) {
     if (val.keyCode == 27)
         init();
 });
+var media1 = window.matchMedia('(max-width: 1300px) and (min-width: 801px)');
 
+window.addEventListener('scroll', () => {
+    if (window.scrollY >= maxHeight)
+        document.querySelector('.buttonContainer').style.position = 'fixed';
+    else if (window.scrollY < (maxHeight))
+        document.querySelector('.buttonContainer').style.position = 'static';
+    if (window.scrollY >= maxHeight)
+        upButton.style.display = 'block';
+    else if (window.scrollY < maxHeight / 1.5) {
+        upButton.style.display = 'none';
+        document.getElementById('myAside').style.opacity = 0;
+        document.querySelector('main').style.opacity = 0;
+        document.querySelector('.testimoniale').style.opacity = 0;
+    }
+});
+
+// window.addEventListener('resize', () => {
+//     logScrollDirection();
+// }); 
+
+logScrollDirection();
 function logScrollDirection() {
     var previous = window.scrollY;
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', function test() {
+        if (media1.matches) {
+            this.window.removeEventListener('scroll', test)
+        }
         window.scrollY > previous ? direction = "down" : direction = "up";
-        previous = 10 + window.scrollY;
-        // console.log(direction);
+        previous = 20 + window.scrollY;
         if (direction == "down") {
-            //&& enabled == true
-            if (window.scrollY >= 0 && window.scrollY <= maxHeight ) {
+            if (window.scrollY >= 0 && window.scrollY <= maxHeight) {
                 window.scrollTo({ top: window.innerHeight, left: 0, behavior: 'smooth' });
             }
-        }
-        if (window.scrollY === (maxHeight))
-            document.querySelector('.buttonContainer').style.position = 'fixed';
-        else if (window.scrollY < (maxHeight))
-            document.querySelector('.buttonContainer').style.position = 'static';
-        if (window.scrollY >= maxHeight)
-            upButton.style.display = 'block';
-        else if (window.scrollY < maxHeight / 1.5) {
-            upButton.style.display = 'none';
-            document.getElementById('myAside').style.opacity = 0;
-            document.querySelector('main').style.opacity = 0;
-            document.querySelector('.testimoniale').style.opacity = 0;
         }
     });
 }
@@ -238,7 +253,7 @@ oferte1.addEventListener('click', function () {
 
 about.addEventListener("click", function () {
     enabled = false;
-    if(document.querySelector(".reservationPage").style.display == 'block'){
+    if (document.querySelector(".reservationPage").style.display == 'block') {
         document.querySelector(".reservationPage").style.display = 'none';
     }
     document.getElementById("aboutPage").style.display = 'block';
@@ -387,8 +402,6 @@ var clicker = addEventListener('click', () => {
 //     logScrollDirection();
 // }
 
-logScrollDirection();
-
 upButton.addEventListener('click', function () {
     window.scrollTo({
         top: 0,
@@ -516,7 +529,7 @@ function myMap() {
 
 rezerva.addEventListener("click", function () {
     enabled = false;
-    if(document.getElementById("aboutPage").style.display == 'block'){
+    if (document.getElementById("aboutPage").style.display == 'block') {
         document.getElementById("aboutPage").style.display = 'none';
     }
     document.querySelector(".reservationPage").style.display = 'block';

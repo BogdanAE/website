@@ -200,12 +200,13 @@
         position: relative;
         float: right;
         text-align: center;
-        margin-right: calc((100vw)/2 - 90px);
+        margin-right: calc((100vw)/3 );
         margin-top: 15px;
         margin-bottom: 15px;
         cursor: pointer;
         clear: right;
-        padding: 5px;
+        padding: 20px;
+        font-size: 2em;
         box-shadow: 0px 2px rgb(15, 129, 158);
         font-family: 'Abril Fatface', cursive;
         background-color: rgb(209, 216, 218);
