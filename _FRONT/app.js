@@ -1,5 +1,4 @@
 //-------GLOBALS----------------------------------
-var oferte1 = document.getElementById("oferte");
 var ofertaClass = document.querySelector(".oferte");
 var upButton = document.querySelector(".buttonUp");
 var img1 = document.getElementById("img1");
@@ -17,17 +16,26 @@ var enabled = true;
 var duplicates = false;
 var maxHeight = window.innerHeight;
 var maxHeight2 = window.outerHeight;
-!(() => {
-    console.log(maxHeight, maxHeight2);
-})();
+
 
 var SD = document.getElementById("sageataDr");
 var SS = document.getElementById("sageataSt");
+
 var rezerva = document.getElementById("rezB");
 var homeButton = document.getElementById("homeB");
-var allGray = document.getElementById("graySc");
+var oferte1 = document.getElementById("oferte");
 var about = document.getElementById("aboutButton");
+var rezerva1 = document.getElementById("rezB1");
+var homeButton1 = document.getElementById("homeB1");
+var oferte11 = document.getElementById("oferte1");
+var about1 = document.getElementById("aboutButton1");
+
+var allGray = document.getElementById("graySc");
 var testiBut = document.getElementById('allTestimonials');
+
+var media1 = window.matchMedia('(max-width: 1300px) and (min-width: 801px)');
+var media2 = window.matchMedia('(min-width: 1301px)');
+var media3 = window.matchMedia('(max-width: 800px)');
 
 !(() => {
     document.querySelector(".oferte").style.display = "none";
@@ -61,17 +69,16 @@ function dupli() {
         duplicates = true;
     else if ((bigImg == 'none') && (ofert == 'none'))
         duplicates = false;
-    //console.log(duplicates);
+    console.log(duplicates);
 };
 
 addEventListener("keydown", function (val) {
     if (val.keyCode == 27)
         init();
 });
-var media1 = window.matchMedia('(max-width: 1300px) and (min-width: 801px)');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY >= maxHeight)
+    if (window.scrollY >= maxHeight || document.querySelector('#testiPage').style.display == "block")
         document.querySelector('.buttonContainer').style.position = 'fixed';
     else if (window.scrollY < (maxHeight))
         document.querySelector('.buttonContainer').style.position = 'static';
@@ -92,14 +99,14 @@ window.addEventListener('scroll', () => {
 logScrollDirection();
 function logScrollDirection() {
     var previous = window.scrollY;
-    window.addEventListener('scroll', function test() {
-        if (media1.matches) {
-            this.window.removeEventListener('scroll', test)
-        }
+    window.addEventListener('scroll', function () {
+        // if (media1.matches) {
+        //     this.window.removeEventListener('scroll', test)
+        // }
         window.scrollY > previous ? direction = "down" : direction = "up";
-        previous = 20 + window.scrollY;
+        previous = 10 + window.scrollY;
         if (direction == "down") {
-            if (window.scrollY >= 0 && window.scrollY <= maxHeight) {
+            if (window.scrollY >= 0 && window.scrollY <= maxHeight && document.getElementById('testiPage').style.display == 'none') {
                 window.scrollTo({ top: window.innerHeight, left: 0, behavior: 'smooth' });
             }
         }
@@ -171,21 +178,103 @@ function compareDates() {
     return fromDate < toDate;
 };
 
+// var rezerva = document.getElementById("rezB");
+// var homeButton = document.getElementById("homeB");
+// var about = document.getElementById("aboutButton");
+// var oferte1 = document.getElementById("oferte");
+
+
+
+window.addEventListener('resize', () => {
+    if(media2.matches){
+        // console.log('media2');
+        // console.log(document.querySelectorAll('button'),document.querySelectorAll('p'))
+        document.querySelectorAll('button')[1].style.display = 'none';
+        document.querySelectorAll('button')[2].style.display = 'none';
+        document.querySelectorAll('button')[3].style.display = 'none';
+        document.querySelectorAll('button')[4].style.display = 'none';
+        document.querySelectorAll('p')[21].style.display = 'block';
+        document.querySelectorAll('p')[22].style.display = 'block';
+        document.querySelectorAll('p')[23].style.display = 'block';
+        document.querySelectorAll('p')[24].style.display = 'block';
+    }
+    else if(media1.matches ){
+        // console.log('media1 sau 3')
+        // console.log(document.querySelectorAll('button'),document.querySelectorAll('p'))
+        document.querySelectorAll('button')[1].style.display = 'block';
+        document.querySelectorAll('button')[2].style.display = 'block';
+        document.querySelectorAll('button')[3].style.display = 'block';
+        document.querySelectorAll('button')[4].style.display = 'block';
+        document.querySelectorAll('p')[21].style.display = 'none';
+        document.querySelectorAll('p')[22].style.display = 'none';
+        document.querySelectorAll('p')[23].style.display = 'none';
+        document.querySelectorAll('p')[24].style.display = 'none';
+    }
+});
+
+!(function whatMenu(){
+    if(media2.matches){
+        document.querySelectorAll('button')[1].style.display = 'none';
+        document.querySelectorAll('button')[2].style.display = 'none';
+        document.querySelectorAll('button')[3].style.display = 'none';
+        document.querySelectorAll('button')[4].style.display = 'none';
+        document.querySelectorAll('p')[12].style.display = 'block';
+        document.querySelectorAll('p')[13].style.display = 'block';
+        document.querySelectorAll('p')[14].style.display = 'block';
+        document.querySelectorAll('p')[15].style.display = 'block';
+    }
+    else if(media1.matches || media3.matches){
+        document.querySelectorAll('p')[12].style.display = 'none';
+        document.querySelectorAll('p')[13].style.display = 'none';
+        document.querySelectorAll('p')[14].style.display = 'none';
+        document.querySelectorAll('p')[15].style.display = 'none';
+        document.querySelectorAll('button')[1].style.display = 'block';
+        document.querySelectorAll('button')[2].style.display = 'block';
+        document.querySelectorAll('button')[3].style.display = 'block';
+        document.querySelectorAll('button')[4].style.display = 'block';
+    }
+})(); 
+
+
 function buttonClass() {
-    if (document.querySelector('.oferte').style.display == 'block')
-        document.querySelectorAll('button')[3].classList.add('activeB');
-    else if (document.querySelector('.oferte').style.display == 'none')
-        document.querySelectorAll('button')[3].classList.remove('activeB');
+    if (document.querySelector('.oferte').style.display == 'block') {
+        if (media1.matches)
+            document.querySelectorAll('button')[3].classList.add('activeB');
+        else
+            oferte11.classList.add('activeB');
+    }
+    else if (document.querySelector('.oferte').style.display == 'none') {
+        if (media1.matches)
+            document.querySelectorAll('button')[3].classList.remove('activeB');
+        else
+            oferte11.classList.remove('activeB');
+    }
 
-    if (document.getElementById("aboutPage").style.display == 'block')
-        document.querySelectorAll('button')[2].classList.add('activeB');
-    else if (document.getElementById("aboutPage").style.display == 'none')
-        document.querySelectorAll('button')[2].classList.remove('activeB');
+    if (document.getElementById("aboutPage").style.display == 'block') {
+        if (media1.matches)
+            document.querySelectorAll('button')[2].classList.add('activeB');
+        else
+            about1.classList.add('activeB');
+    }
+    else if (document.getElementById("aboutPage").style.display == 'none') {
+        if (media1.matches)
+            document.querySelectorAll('button')[2].classList.remove('activeB');
+        else
+            about1.classList.remove('activeB');
+    }
 
-    if (document.querySelector(".reservationPage").style.display == 'block')
-        document.querySelectorAll('button')[4].classList.add('activeB');
-    else if (document.querySelector(".reservationPage").style.display == 'none')
-        document.querySelectorAll('button')[4].classList.remove('activeB');
+    if (document.querySelector(".reservationPage").style.display == 'block') {
+        if (media1.matches)
+            document.querySelectorAll('button')[4].classList.add('activeB');
+        else
+            rezerva1.classList.add('activeB')
+    }
+    else if (document.querySelector(".reservationPage").style.display == 'none') {
+        if (media1.matches)
+            document.querySelectorAll('button')[4].classList.remove('activeB');
+        else
+            rezerva1.classList.remove('activeB')
+    }
 }
 //------------END VALIDATION-------------------------------
 
@@ -218,12 +307,49 @@ function init() {
 
 oferte1.addEventListener('click', function () {
     dupli();
-    if (document.querySelector(".oferte").style.display == "none" && duplicates === false) {
+    if (document.querySelector(".oferte").style.display == "none" && !duplicates) {
         document.querySelector(".oferte").style.display = "block";
         allGray.style.filter = "grayscale(100%)";
         document.querySelector(".oferte").style.filter = "blur(0.1px)";
         document.getElementById("myHeader").style.filter = "grayscale(100%)";
-        scrollTo({ left: 0, top: window.innerHeight, behavior: 'smooth' });
+        if (document.getElementById('testiPage').style.display == 'none')
+            scrollTo({ left: 0, top: window.innerHeight, behavior: 'smooth' });
+    }
+    else if (duplicates == false) {
+        document.querySelector(".oferte").style.display = "none";
+        allGray.style.filter = "grayscale(0%)";
+        document.getElementById("myHeader").style.filter = "grayscale(0%)";
+        canICloseIt2 = false;
+    }
+    else if (document.querySelector(".oferte").style.display == "block" && duplicates === false) {
+        document.querySelector(".oferte").style.display = "none";
+        allGray.style.filter = "grayscale(0%)";
+        document.getElementById("myHeader").style.filter = "grayscale(0%)";
+        canICloseIt2 = false;
+    }
+    else if (document.querySelector(".oferte").style.display == "none" && duplicates === true && document.querySelector('.imageBig').style.display == 'block') {
+        document.querySelector('.imageBig').style.display = 'none';
+        document.querySelector(".oferte").style.display = "block";
+        allGray.style.filter = "grayscale(100%)";
+        document.getElementById("myHeader").style.filter = "grayscale(0%)";
+        canICloseIt2 = false;
+        duplicates = false;
+    }
+    setTimeout(() => {
+        canICloseIt2 = true;
+    }, 50);
+    buttonClass();
+});
+
+oferte11.addEventListener('click', function () {
+    dupli();
+    if (document.querySelector(".oferte").style.display == "none" && !duplicates) {
+        document.querySelector(".oferte").style.display = "block";
+        allGray.style.filter = "grayscale(100%)";
+        document.querySelector(".oferte").style.filter = "blur(0.1px)";
+        document.getElementById("myHeader").style.filter = "grayscale(100%)";
+        if (document.getElementById('testiPage').style.display == 'none')
+            scrollTo({ left: 0, top: window.innerHeight, behavior: 'smooth' });
     }
     else if (duplicates == false) {
         document.querySelector(".oferte").style.display = "none";
@@ -256,6 +382,22 @@ about.addEventListener("click", function () {
     if (document.querySelector(".reservationPage").style.display == 'block') {
         document.querySelector(".reservationPage").style.display = 'none';
     }
+    if (document.getElementById("testiPage").style.display = 'block')
+        document.getElementById("testiPage").style.display = 'none';
+    document.getElementById("aboutPage").style.display = 'block';
+    document.querySelector('.scrollDiv').style.height = '100%';
+    checkIt(enabled);
+    window.scroll(0, 0);
+    buttonClass();
+});
+
+about1.addEventListener("click", function () {
+    enabled = false;
+    if (document.querySelector(".reservationPage").style.display == 'block') {
+        document.querySelector(".reservationPage").style.display = 'none';
+    }
+    if (document.getElementById("testiPage").style.display = 'block')
+        document.getElementById("testiPage").style.display = 'none';
     document.getElementById("aboutPage").style.display = 'block';
     document.querySelector('.scrollDiv').style.height = '100%';
     checkIt(enabled);
@@ -360,7 +502,7 @@ addEventListener('scroll',
         }
         if (window.scrollY <= window.innerHeight && (document.querySelector('.imageBig').style.display == 'block'
             || document.querySelector('.oferte').style.display == 'block')) {
-            window.scrollTo({ left: 0, top: window.innerHeight, behavior: 'smooth' });
+            window.scrollTo({ left: 0, top: window.innerHeight });
         }
     });
 
@@ -540,7 +682,33 @@ rezerva.addEventListener("click", function () {
     buttonClass();
 });
 
+rezerva1.addEventListener("click", function () {
+    enabled = false;
+    if (document.getElementById("aboutPage").style.display == 'block') {
+        document.getElementById("aboutPage").style.display = 'none';
+    }
+    document.querySelector(".reservationPage").style.display = 'block';
+    // console.log(enabled);
+    document.querySelector('.scrollDiv').style.height = '100%';
+    checkIt(enabled);
+    window.scroll(0, 0);
+    buttonClass();
+});
+
 homeButton.addEventListener("click", function () {
+    enabled = true;
+    //console.log(enabled);
+    checkIt(enabled);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    init();
+    document.querySelector('.scrollDiv').style.height = 'calc(100vh + 50px)';
+    document.getElementById('aboutPage').style.display = 'none';
+    document.querySelector('.reservationPage').style.display = 'none';
+    document.getElementById("testiPage").style.display = 'none';
+    buttonClass();
+});
+
+homeButton1.addEventListener("click", function () {
     enabled = true;
     //console.log(enabled);
     checkIt(enabled);
@@ -561,6 +729,7 @@ homeButton.addEventListener("click", function () {
 
 addEventListener('resize', () => {
     //console.log('overflow');
+    
     if (document.querySelector('.oferteM').offsetWidth < 500)
         document.querySelector('.oferteM:nth-child(2)').style.overflowY = "scroll";
     else if (document.querySelector('.oferteM').offsetWidth >= 500)
