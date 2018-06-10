@@ -28,7 +28,7 @@
             for (let i = 1; i <= 3; i++) {
                 var div = document.createElement('div');
                 document.getElementById('text' + i).appendChild(div);
-                div.setAttribute('id','testiDiv');
+                div.setAttribute('id', 'testiDiv');
                 var figure = document.createElement('figure');
                 div.appendChild(figure);
                 var img = document.createElement('img');
@@ -46,8 +46,11 @@
                 txt.innerHTML = '<b>A spus:</b>  <q>' + data[data.length - i].message + '</q>';
                 div.appendChild(txt);
             }
-            document.getElementById('loaded').style.display = 'block';
-            document.getElementById('loading').style.display = 'none';
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('loaded').style.display = 'block';
+            }, 2000);
+
         }
     });
     $.ajax({

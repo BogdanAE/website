@@ -8,12 +8,6 @@
         background-color: #f0eceb;
         user-select: none;
     }
-    #loading {
-        display: block;
-    }
-    #loaded {
-        display: none;
-    }
     header {
         top: 35px;
         width: auto;
@@ -194,7 +188,6 @@
         border: 2px solid black;
         box-sizing: content-box;
         border-radius: 3px;
-
     }
     #allTestimonials {
         height: auto;
@@ -214,19 +207,19 @@
         background-color: rgb(209, 216, 218);
         transition: 0.3s linear;
     }
-    #allTestimonials > i {
+    #allTestimonials>i {
         width: 25px;
         transform: scale(1.2);
         color: #e62739;
         text-shadow: 1px 1px 2px #e62739;
     }
-    #testiDiv{
+    #testiDiv {
         overflow: hidden;
         /* text-align: justify; */
         max-width: 35vw;
         word-wrap: break-word;
     }
-    #allTestimonials > span {
+    #allTestimonials>span {
         color: rgb(0, 87, 109);
     }
     .testimoniale>p {
@@ -237,7 +230,7 @@
         margin-top: 70px;
         z-index: 999;
     }
-    #allTestimonials:hover{
+    #allTestimonials:hover {
         transform: scale(1.2);
         box-shadow: 2px 3px 2px rgb(15, 129, 158);
     }
@@ -433,22 +426,21 @@
         background-color: white;
         z-index: 99999;
     }
-    
 }
 
-.imageBig > .fa{
+.imageBig>.fa {
     transform: scale(4.5);
     cursor: pointer;
 }
 
-.imageBig > .fa-angle-left{
+.imageBig>.fa-angle-left {
     position: relative;
     top: 50%;
     left: 3.5%;
     animation: blink 2s linear infinite;
 }
 
-.imageBig > .fa-angle-right{
+.imageBig>.fa-angle-right {
     position: relative;
     float: right;
     right: 3.5%;
@@ -457,8 +449,12 @@
 }
 
 @keyframes blink {
-    0%{transform: scale(4.5)}
-    10%{transform: scale(6)}
+    0% {
+        transform: scale(4.5)
+    }
+    10% {
+        transform: scale(6)
+    }
 }
 
 #divv {
@@ -472,4 +468,144 @@
     padding: 2%;
     word-wrap: break-word;
     text-align: justify;
+}
+
+#loading {
+    display: block;
+}
+
+.l1 {
+    margin-left: 44%;
+    float: left;
+    margin-top: 7.5%;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+    animation: colors 5s linear infinite;
+    animation-delay: 2.5s;
+}
+
+.l1>p {
+    float: left;
+}
+
+.l1>p:nth-child(2), .l1>p:nth-child(3), .l1>p:nth-child(4){
+    animation: first 1s linear infinite;
+}
+
+.l1>p:nth-child(3) {
+    animation-delay: 1s;
+    /* color: #f0eceb; */
+    visibility: hidden;
+}
+
+.l1>p:nth-child(4) {
+    animation-delay: 2s;
+    /* color: #f0eceb; */
+    visibility: hidden;
+}
+
+@keyframes first {
+    0% {
+        /* color: #f0eceb;*/
+        visibility: hidden;
+    }
+    50% {
+        /* color: inherit; */
+        visibility: visible;
+    }
+    100%{
+        visibility: hidden;
+    }
+}
+
+@keyframes colors {
+    0% {
+        color: red;
+    }
+    33% {
+        color: blue;
+    }
+    66% {
+        color: cyan;
+    }
+    100% {
+        color: red;
+    }
+}
+
+.l2 {
+    width: 96px;
+    height: 48px;
+    background: #eee;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px 2px 50px 2px;
+    border-radius: 100%;
+    position: relative;
+    transform: translate(45vw, 50vh);
+    animation: jump 3s linear infinite;
+}
+
+.l2:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: #eee;
+    border: 18px solid black;
+    border-radius: 100%;
+    width: 12px;
+    height: 12px;
+}
+
+.l2:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: black;
+    border: 18px solid #eee;
+    border-radius: 100%;
+    width: 12px;
+    height: 12px;
+}
+
+@keyframes jump {
+    0% {
+        transform: translate(45vw, 25vh);
+    }
+    10% {
+        transform: translate(42.5vw, 30vh);
+    }
+    20% {
+        transform: translate(40vw, 35vh);
+    }
+    30% {
+        transform: translate(37.5vw, 40vh);
+    }
+    40% {
+        transform: translate(40vw, 44vh);
+    }
+    50% {
+        transform: translate(45vw, 49vh);
+    }
+    60% {
+        transform: translate(50vw, 44vh);
+    }
+    70% {
+        transform: translate(54vw, 40vh);
+    }
+    80% {
+        transform: translate(50, 35vh);
+    }
+    90% {
+        transform: translate(47vw, 30vh);
+    }
+    100% {
+        transform: translate(45vw, 25vh);
+    }
+}
+
+#loaded {
+    display: none;
 }
