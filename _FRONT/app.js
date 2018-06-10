@@ -71,7 +71,8 @@ function logScrollDirection() {
         previous = 10 + window.scrollY;
         // console.log(direction);
         if (direction == "down") {
-            if (window.scrollY >= 0 && window.scrollY <= maxHeight && enabled == true) {
+            //&& enabled == true
+            if (window.scrollY >= 0 && window.scrollY <= maxHeight ) {
                 window.scrollTo({ top: window.innerHeight, left: 0, behavior: 'smooth' });
             }
         }
