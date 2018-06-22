@@ -421,7 +421,19 @@
         background-color: #89bdd3;
         transition: all 1s linear;
         font-family: 'Roboto Slab', serif;
+        padding: 50px;
+        box-sizing: border-box;
     }
+
+    #aboutPage > img {
+        margin-left: 20%;
+        transition: 1s ease-in-out;
+    }
+
+    #lacIMG:hover{
+        transform: scale(1.1);
+    }
+
     #testiPage {
         min-height: calc(100vh - 50px);
         position: absolute;

@@ -193,10 +193,10 @@ window.addEventListener('resize', () => {
         document.querySelectorAll('button')[2].style.display = 'none';
         document.querySelectorAll('button')[3].style.display = 'none';
         document.querySelectorAll('button')[4].style.display = 'none';
-        document.querySelectorAll('p')[21].style.display = 'block';
         document.querySelectorAll('p')[22].style.display = 'block';
         document.querySelectorAll('p')[23].style.display = 'block';
         document.querySelectorAll('p')[24].style.display = 'block';
+        document.querySelectorAll('p')[25].style.display = 'block';
     }
     else if(media1.matches ){
         // console.log('media1 sau 3')
@@ -205,10 +205,10 @@ window.addEventListener('resize', () => {
         document.querySelectorAll('button')[2].style.display = 'block';
         document.querySelectorAll('button')[3].style.display = 'block';
         document.querySelectorAll('button')[4].style.display = 'block';
-        document.querySelectorAll('p')[21].style.display = 'none';
         document.querySelectorAll('p')[22].style.display = 'none';
         document.querySelectorAll('p')[23].style.display = 'none';
         document.querySelectorAll('p')[24].style.display = 'none';
+        document.querySelectorAll('p')[25].style.display = 'none';
     }
 });
 
